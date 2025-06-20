@@ -1,6 +1,6 @@
 class SearchSuggestionSystem {
   constructor(products) {
-    this.products = products.sort(); // ✅ sorts lexicographically
+    this.products = products.sort();
   }
 
   getSuggestions(searchWord) {
@@ -8,17 +8,17 @@ class SearchSuggestionSystem {
     let prefix = '';
 
     for (let i = 0; i < searchWord.length; i++) {
-      prefix += searchWord[i];              // ✅ builds prefix step-by-step
+      prefix += searchWord[i];
       let suggestions = [];
 
       for (let product of this.products) {
-        if (product.startsWith(prefix)) {   // ✅ matches prefix
+        if (product.startsWith(prefix)) {
           suggestions.push(product);
         }
-        if (suggestions.length === 3) break; // ✅ limits to top 3
+        if (suggestions.length === 3) break;
       }
 
-      results.push(suggestions);             // ✅ adds to results for this prefix
+      results.push(suggestions);
     }
 
     return results;
