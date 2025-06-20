@@ -1,0 +1,26 @@
+class SearchSuggestionSystem {
+  constructor(products) {
+    this.products = products.sort(); // ✅ sorts lexicographically
+  }
+
+  getSuggestions(searchWord) {
+    let results = [];
+    let prefix = '';
+
+    for (let i = 0; i < searchWord.length; i++) {
+      prefix += searchWord[i];              // ✅ builds prefix step-by-step
+      let suggestions = [];
+
+      for (let product of this.products) {
+        if (product.startsWith(prefix)) {   // ✅ matches prefix
+          suggestions.push(product);
+        }
+        if (suggestions.length === 3) break; // ✅ limits to top 3
+      }
+
+      results.push(suggestions);             // ✅ adds to results for this prefix
+    }
+
+    return results;
+  }
+}
